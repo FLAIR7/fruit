@@ -79,9 +79,11 @@ export function CartProvider({children}: CartProviderProps){
     }
 
     function removeAll(){
-        localStorage.clear();
+        if(cartItems.length !== 0){
+            localStorage.clear();
+            window.location.reload();
+        }
     }
-
 
     return (
         <CartContext.Provider value={{

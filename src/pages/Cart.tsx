@@ -9,7 +9,12 @@ export function Cart(){
         <div>
             <h1>Cart</h1>
             <Stack gap={3}>
-                {cartItems.map(items => (
+                {cartItems.length === 0 ? 
+                    <div>
+                        <h3>Your Cart is empty</h3>
+                    </div>
+                :
+                cartItems.map(items => (
                     <CartItem key={items.id} {...items}/>
                 ))}
             </Stack>

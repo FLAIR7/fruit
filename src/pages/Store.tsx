@@ -10,12 +10,14 @@ export function Store(){
 
     const [frutas, setFrutas] = useState<Frutas[]>([]);
 
-    function x(){
-        axios.get('/api/fruit/all')
-        .then(res => setFrutas(res.data));
-      }
+    async function loadData(){
+        await axios.get('/api/fruit/all')
+            .then(res => setFrutas(res.data));
+    }
 
-    useEffect(() => x());
+    useEffect(() => {
+        loadData()
+    }, []);
 
     return (
         <div className="container">

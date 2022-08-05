@@ -4,21 +4,6 @@ import Button from "react-bootstrap/Button"
 import { useCart } from "../../contexts/CartContext"
 import { Frutas} from "../../types/Fruta";
 
-/*type Frutas = {
-    id: number,
-    name: string,
-    family: string,
-    genus: string,
-    order: string,
-    nutritions: {
-        carbohydrates: number,
-        protein: number,
-        fat: number,
-        calories: number,
-        sugar: number
-    }
-}*/
-
 interface Props {
     fruta: Frutas
 }
@@ -30,10 +15,8 @@ export function StoreFruits({fruta}: Props){
     const handleShow = () => setShow(true);
 
     const {
-        getItemQuantity,
         increaseCartQuantity,
     } = useCart();
-    // const quantity = getItemQuantity(fruta.id);
 
     return (
         <Card className="h-100">
@@ -50,7 +33,7 @@ export function StoreFruits({fruta}: Props){
                         <Button variant="danger" onClick={handleShow}>
                             Info
                         </Button>
-                        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+                        <Modal show={show} onHide={handleClose} keyboard={false}>
                             <Modal.Header>Info</Modal.Header>
                             <Modal.Body>
                                 <p>Family: {fruta.family}</p>

@@ -16,29 +16,40 @@ export function CartItem({id, quantity}: CartProps) {
     } = useCart();
     const [frutas, setFrutas] = useState<Frutas[]>([]);
 
-    function x(){
-        axios.get('/api/fruit/all')
-        .then(res => setFrutas(res.data));
-      }
+    async function loadData(){
+        await axios.get('/api/fruit/all')
+            .then(res => setFrutas(res.data));
+    }
 
-    useEffect(() => x());
+    useEffect(() => {
+        loadData()
+    }, []);
 
-    const item = frutas.find(item => item.id === id);
-    if(item == null) return null;
+    const fruit = frutas.find(fruit => fruit.id === id);
+    if(fruit == null) return null;
 
     return (
         <Card className="h-100">
             <Card.Body className="d-flex flex-column">
                 <Card.Title>
-                    <span className="fs-2">{item.name}</span>
+                    <span className="fs-2">{fruit.name}</span>
                     X{quantity}
                 </Card.Title>
+                <div>
+                    <ul>
+                        <li>Carbohydrates: {fruit.nutritions.carbohydrates}</li>
+                        <li>Protein: {fruit.nutritions.protein}</li>
+                        <li>Fat: {fruit.nutritions.fat}</li>
+                        <li>Calories: {fruit.nutritions.calories}</li>
+                        <li>Sugar: {fruit.nutritions.sugar}</li>
+                    </ul>
+                </div>
                 <div className="mt-auto">
-                    <Button style={{marginRight: "5px"}}size="sm" className="btn primary" onClick={() => increaseCartQuantity(item.id)}>+</Button>
+                    <Button style={{marginRight: "5px"}}size="sm" className="btn primary" onClick={() => increaseCartQuantity(fruit.id)}>+</Button>
                     {quantity !== 1 ? (
-                        <Button size="sm" className="btn btn-danger" onClick={() => decreaseCartQuantity(item.id)}>-</Button>
+                        <Button size="sm" className="btn btn-danger" onClick={() => decreaseCartQuantity(fruit.id)}>-</Button>
                     ): (
-                        <Button size="sm" className="btn btn-danger" onClick={() => removeFromCart(item.id)}>Remove</Button>
+                        <Button size="sm" className="btn btn-danger" onClick={() => removeFromCart(fruit.id)}>Remove</Button>
                     )}
                 </div>
             </Card.Body>
