@@ -10,7 +10,6 @@ export function Navbar(){
     return (
         <NavbarBg className="bg-dark shadow-sm mb-3">
             <Container>
-                {/* <NavbarBg.Brand className="text-white">Fruits</NavbarBg.Brand> */}
                 <Nav>
                     <Nav.Link className="text-white navbar-brand" to="/" as={NavLink}>
                         Fruits
