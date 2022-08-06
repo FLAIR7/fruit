@@ -1,13 +1,14 @@
 import { useCart } from "../contexts/CartContext";
 import { CartItem} from "../components/cart/CartItem";
 import { Button, Stack } from "react-bootstrap";
+import { ShoppingCartOutlined } from "@material-ui/icons";
 
 export function Cart(){
     const {cartItems, removeAll} = useCart();
 
     return(
         <div>
-            <h1>Cart</h1>
+            <h1>Cart <ShoppingCartOutlined/></h1>
             <Stack gap={3}>
                 {cartItems.length === 0 ? 
                     <div>
