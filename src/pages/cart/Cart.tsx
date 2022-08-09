@@ -1,5 +1,5 @@
-import { useCart } from "../contexts/CartContext";
-import { CartItem} from "../components/cart/CartItem";
+import { useCart } from "../../contexts/CartContext";
+import { CartItem} from "../../components/cart/CartItem";
 import { Button, Stack } from "react-bootstrap";
 import { ShoppingCartOutlined } from "@material-ui/icons";
 

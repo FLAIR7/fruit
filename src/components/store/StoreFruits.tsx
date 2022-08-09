@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button"
 import { useCart } from "../../contexts/CartContext"
 import { Frutas} from "../../types/Fruta";
 
-interface Props {
+type Props = {
     fruta: Frutas
 }
 

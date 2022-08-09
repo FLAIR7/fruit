@@ -1,10 +1,10 @@
 import {Col, Row} from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { StoreFruits } from "../components/store/StoreFruits";
+import { StoreFruits } from "../../components/store/StoreFruits";
 import './Store.css';
-import { Frutas } from "../types/Fruta";
-import { LoadingSpinner } from "../components/Spinner/LoadingSpinner";
+import { Frutas } from "../../types/Fruta";
+import { LoadingSpinner } from "../../components/Spinner/LoadingSpinner";
 
 export function Store(){
 
